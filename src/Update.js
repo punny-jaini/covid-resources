@@ -131,7 +131,7 @@ const Update = ({queries, unchecked, functions}) => {
     }
 
     const checkPasscode = p => {
-        if(p.target.value==='1709x2') setPass(true);
+        if(p.target.value===process.env.REACT_APP_VERIFY_PASSWORD) setPass(true);
     }
 
     useEffect(()=>sortResult(), [queries, unchecked, state, categ, vst]);
