@@ -31,6 +31,46 @@ const styles= {
 
 const options = ['Oxygen', 'Remdesivir', 'Plasma', 'Beds', 'Other Medicines', 'Food', 'Tocilizumab'];
 
+function getDateTimeDifference(timeStamp){
+    var convertedDateTime = new Date(timeStamp);
+    var currentDateTime = new Date();
+    var diff = (currentDateTime - convertedDateTime)/1000;
+    var result = 0;
+    var unit;
+    var suffix = " ago";
+
+    if(diff < 60){
+        unit = " second";
+        result = diff;
+    }
+    else if(diff < 60*60){
+        unit = " minute";
+        result =  parseInt(diff/60);
+    }
+    else if(diff < 60*60*24){
+        unit = " hour";
+        result =  parseInt(diff/(60*60));
+    }
+    else if(diff < 60*60*24*7){
+        unit = " day";
+        result = parseInt(diff/(60*60*24));
+    }
+    else if(diff < 60*60*24*30){
+        unit = " week";
+        result = parseInt(diff/(60*60*24*7));
+    }
+    else{
+        unit = " month";
+        result = parseInt(diff/(60*60*24*30));
+    }
+    if(result == 1){
+        return result + unit + suffix;
+    }
+    else{
+        return result + unit + "s" + suffix;
+    }
+}
+
 const Seeker = ({queries}) => {
     const [state, setState] = useState(undefined);
     const [categ, setCateg] = useState(undefined);
@@ -68,6 +108,8 @@ const Seeker = ({queries}) => {
     }
 
     useEffect(()=>sortResult(), [queries, state, categ]);
+
+
 
     return (
         <>
@@ -136,6 +178,7 @@ const Seeker = ({queries}) => {
                                         <div><b>NAME: </b>{item[1].name}</div>
                                         <div><b>PHONE: </b>
                                         <a href={`tel:+91${item[0]}`}>{item[0]}</a><br />
+                                        <div><b>Last Verified: </b>{getDateTimeDifference(item[1].verified)}</div>
                                         <center>
                                         {item[1].desc && 
                                         <div style={{display: 'inline', marginRight: '4px'}}>
