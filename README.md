@@ -8,5 +8,5 @@ https://nodejs.org/en/download/
 
 2. `npm start`
 # If you encouter an issue saying SET is not defined:
- - Change the `package.json` file and under the `sripts` object delete the `SET PORT=3003 &&` under "start" so that it says `"start": "react-scripts-start"`
+ - Change the `package.json` file and under the `scripts` object delete the `SET PORT=3003 &&` under "start" so that it says `"start": "react-scripts-start"`
 
