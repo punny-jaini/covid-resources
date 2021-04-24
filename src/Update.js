@@ -5,6 +5,8 @@ import { states } from './states';
 import { Link } from 'react-router-dom';
 import verified from './assets/verified.png';
 import { markVerified, exhausted } from './actions';
+import Login from './Login';
+import Logout from './Logout';
 const { Option } = Select;
 
 const styles= {
@@ -23,11 +25,13 @@ const styles= {
     },
     backbtn: {
         position: 'relative',
-        top: '5px'
+        top: '5px',
+        marginRight: '2%'
+
         // left: '3%'
     },
     v: {
-        width: '49%', 
+        width: '49%',
         marginRight: '2%',
         textAlign: 'center'
     },
@@ -62,7 +66,7 @@ const Update = ({queries, unchecked, functions}) => {
     const ModalHeader = ({d}) => {
         return (
             <>
-                {vst? 
+                {vst?
                 <div><img src={verified} width="10%" style={{marginRight: '5%'}} />Verifed on {makedate(d)}</div>
                 : d[1].verified?<div>Not working on {makedate(d)}</div>:<div>UNVERIFIED ENTRY</div>
                 }
@@ -131,7 +135,7 @@ const Update = ({queries, unchecked, functions}) => {
     }
 
     const checkPasscode = p => {
-        if(p.target.value===process.env.REACT_APP_VERIFY_PASSWORD) setPass(true);
+        if(Login.onSuccess) setPass(true);
     }
 
     useEffect(()=>sortResult(), [queries, unchecked, state, categ, vst]);
@@ -143,6 +147,10 @@ const Update = ({queries, unchecked, functions}) => {
         <Link to="/">
         <Button type="primary" style={styles.backbtn} icon={<ArrowLeftOutlined />}>Back</Button>
         </Link>
+        <Link to="/Logout">
+        <Button type="primary" style={styles.backbtn}>Logout</Button>
+        </Link>
+
         <div style={styles.wrapper}>
             <Form layout="inline">
                 {/* <Form.Item>
@@ -191,7 +199,7 @@ const Update = ({queries, unchecked, functions}) => {
                     </Select>
                 </Form.Item>
             </Form>
-            <Modal title={<ModalHeader d={details} />} 
+            <Modal title={<ModalHeader d={details} />}
                 visible={details} onCancel={() => setDetails(null)} footer={null}
             >
                 {vst ? <div style={{marginBottom: '20px'}}>
@@ -204,7 +212,7 @@ const Update = ({queries, unchecked, functions}) => {
                 </div>}
                 <Row style={{width: '100%'}}>
                     <Col style={vst?styles.v:styles.u}>
-                        <Button 
+                        <Button
                             type="primary"
                             onClick={()=>markVerified(details, setDetails, [vst, vst?functions.v:functions.u])}
                         >
@@ -212,7 +220,7 @@ const Update = ({queries, unchecked, functions}) => {
                         </Button>
                     </Col>
                     {vst && <Col style={{width: '49%', textAlign: 'center'}}>
-                        <Button 
+                        <Button
                             type="danger"
                             onClick={()=>exhausted(details, setDetails, functions.v)}
                         >Not Working</Button>
@@ -261,16 +269,12 @@ const Update = ({queries, unchecked, functions}) => {
             </div>
         </div>
         ) : (
-            <div style={{margin: '10%'}}>
-                <Form>
-                    <Form.Item
-                        name="password"
-                        label="Password: "
-                    >
-                        <Input placeholder="Enter Passcode" onChange={checkPasscode} />
-                    </Form.Item>
-                </Form>
-            </div>
+          <div className="App">
+               <h2>Help Verify Active Resources</h2>
+                         <Login update={setPass} />
+
+
+                          </div>
         )}
         </>
     )
