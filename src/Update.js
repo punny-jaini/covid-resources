@@ -57,7 +57,6 @@ const Update = ({queries, unchecked, functions}) => {
     const [result, setResult] = useState({});
     const [details, setDetails] = useState(null);
     const [vst, setVst] = useState(true);
-    const [pass, setPass] = useState(false);
 
     const ModalHeader = ({d}) => {
         return (
@@ -130,15 +129,9 @@ const Update = ({queries, unchecked, functions}) => {
         }
     }
 
-    const checkPasscode = p => {
-        if(p.target.value===process.env.REACT_APP_VERIFY_PASSWORD) setPass(true);
-    }
-
     useEffect(()=>sortResult(), [queries, unchecked, state, categ, vst]);
 
     return (
-        <>
-        {pass? (
         <div>
         <Link to="/">
         <Button type="primary" style={styles.backbtn} icon={<ArrowLeftOutlined />}>Back</Button>
@@ -260,19 +253,6 @@ const Update = ({queries, unchecked, functions}) => {
                     )}</div>) : <Alert style={{marginTop: '10px'}} type="warning" message="No record Found" showIcon/>}
             </div>
         </div>
-        ) : (
-            <div style={{margin: '10%'}}>
-                <Form>
-                    <Form.Item
-                        name="password"
-                        label="Password: "
-                    >
-                        <Input placeholder="Enter Passcode" onChange={checkPasscode} />
-                    </Form.Item>
-                </Form>
-            </div>
-        )}
-        </>
     )
 }
 

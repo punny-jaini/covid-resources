@@ -12,6 +12,8 @@ import Update from './Update';
 import Dashboard from './Dashboard'
 import { getHelpers, getUnverified, getLinks } from './actions';
 import Resources from './resources';
+import Login from './components/Login';
+import Logout from './components/Logout';
 
 const { Content, Footer } = Layout;
 
@@ -19,6 +21,7 @@ const App = () => {
   const [help, setHelp] = useState({});
   const [unverified, setUnverified] = useState({});
   const [links, setLinks] = useState([]);
+  const [isLoggedIn] = useState(true);
 
   useEffect(() => getHelpers(setHelp), [setHelp]);
   useEffect(() => getUnverified(setUnverified), [setUnverified]);
@@ -44,6 +47,11 @@ const App = () => {
           <Menu.Item key="/about" style={{fontSize: '16px'}}>
             <Link to="/about">About</Link>
           </Menu.Item>
+          {isLoggedIn && (
+            <Menu.Item key="/logout" style={{fontSize: '16px'}}>
+              <Link to="/logout">Log Out</Link>
+            </Menu.Item>
+          )}
         </Menu>
       {/* </div> */}
       <Content style={{ padding: '0 2%'}}>
@@ -68,6 +76,12 @@ const App = () => {
           </Route>
           <Route path="/dashboard">
               <Dashboard />
+          </Route>
+          <Route path="/login">
+              <Login />
+          </Route>
+          <Route path="/logout">
+              <Logout />
           </Route>
           <Route path="/">
               <Home />

@@ -80,7 +80,7 @@ const Home = () => {
                                 </Link>
                             </Col>
                             <Col style={{width: '49%'}}>
-                                <Link to="/update">
+                                <Link to="/login">
                                 <Button shape="round" size="large" type="primary" style={styles.helpButton}>Help Verify</Button>
                                 </Link>
                             </Col>
