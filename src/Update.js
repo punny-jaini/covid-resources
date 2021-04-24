@@ -262,6 +262,10 @@ const Update = ({queries, unchecked, functions}) => {
         </div>
         ) : (
             <div style={{margin: '10%'}}>
+                <p style={{}}>
+                Use this page to help us <b>check and verify our leads</b>! Please enter your password or 
+                <a target="blank" href="https://forms.gle/GznUPJ7s5ZwZSsreA"> contact us </a> if you would like to offer help!
+                </p>
                 <Form>
                     <Form.Item
                         name="password"
