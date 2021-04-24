@@ -4,6 +4,7 @@ import { ArrowLeftOutlined } from '@ant-design/icons';
 import { states } from './states';
 import { Link } from 'react-router-dom';
 import { addHelpAdmin } from './actions';
+import Reader from './CsvReader';
 const { Option } = Select;
 
 const styles= {
@@ -122,6 +123,7 @@ const Admin = () => {
                     </Form.Item>
                 </Form>
             </Card>
+            <Reader />
         </div>
         </>
     )

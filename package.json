@@ -10,6 +10,7 @@
     "firebase": "^8.4.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-papaparse": "^3.12.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.1"
@@ -18,8 +19,7 @@
     "start": "SET PORT=3003 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy": "firebase deploy --token 1//0gPuyprklgIWaCgYIARAAGBASNwF-L9Irtzl_E7X0iwcBtIOmgVqbA1ysqY28C6UEpCCQUI6Ss1OOuVQ1GuKoA1nzu58hR5UO-LE"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
