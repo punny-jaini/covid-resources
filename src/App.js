@@ -1,5 +1,6 @@
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useContext} from 'react';
 import { Layout, Menu} from 'antd';
+import * as React from 'react'
 import { Route, Switch, BrowserRouter, Link } from 'react-router-dom';
 // import './App.css';
 import 'antd/dist/antd.css';
@@ -14,6 +15,7 @@ import { getHelpers, getUnverified, getLinks } from './actions';
 import Resources from './resources';
 import Login from './components/Login';
 import Logout from './components/Logout';
+import IsLoggedInContext from './utils/loggedin-context';
 
 const { Content, Footer } = Layout;
 
@@ -21,7 +23,12 @@ const App = () => {
   const [help, setHelp] = useState({});
   const [unverified, setUnverified] = useState({});
   const [links, setLinks] = useState([]);
-  const [isLoggedIn] = useState(true);
+  // const [isLoggedIn, setIsLoggedIn] = useContext(IsLoggedInContext);
+  
+  // const loggedInHook = useState(IsLoggedInContext);
+
+  const loggedInHook = useContext(IsLoggedInContext);
+  console.log(loggedInHook + " in app.js");
 
   useEffect(() => getHelpers(setHelp), [setHelp]);
   useEffect(() => getUnverified(setUnverified), [setUnverified]);
@@ -29,6 +36,7 @@ const App = () => {
 
   return (
   <BrowserRouter>
+  <IsLoggedInContext.Provider value = {loggedInHook}>
     <Layout className="layout" style={{minHeight: '100vh'}}>
       {/* <div style={{padding: "1%"}}> */}
         <Menu theme="dark" mode="horizontal" style={{ fontSize: '22px', padding: "1%", display: 'flex', justifyContent:'flex-end' }} defaultSelectedKeys={[window.location.pathname]}>
@@ -47,7 +55,12 @@ const App = () => {
           <Menu.Item key="/about" style={{fontSize: '16px'}}>
             <Link to="/about">About</Link>
           </Menu.Item>
-          {isLoggedIn && (
+          {!loggedInHook && (
+            <Menu.Item key="/login" style={{fontSize: '16px'}}>
+              <Link to="/login">Log In</Link>
+            </Menu.Item>
+          )}
+          {loggedInHook && (
             <Menu.Item key="/logout" style={{fontSize: '16px'}}>
               <Link to="/logout">Log Out</Link>
             </Menu.Item>
@@ -92,6 +105,7 @@ const App = () => {
         Covid Toolkit ©2021 Created by Lakshay Agrawal
       </Footer>
     </Layout>
+    </IsLoggedInContext.Provider>
   </BrowserRouter>
   );
 }

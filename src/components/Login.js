@@ -1,24 +1,27 @@
 import React from 'react';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import { useHistory } from "react-router-dom";
 // refresh token
 import { refreshTokenSetup } from '../utils/refresh-token';
+import IsLoggedInContext from '../utils/loggedin-context';
 
 const clientId =
   '483933534809-u26duelm7pqej6en9cru19cjqkp3a0uj.apps.googleusercontent.com';
 
 function Login() {
   let history = useHistory();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useContext(IsLoggedInContext);
+  // const { isLoggedIn } = useContext(IsLoggedInContext);
 
   const onSuccess = (res) => {
     console.log('Login Success: currentUser:', res.profileObj);
-    alert(
-      `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
-    );
+    // alert(
+    //   `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
+    // );
     refreshTokenSetup(res);
     setIsLoggedIn(true);
+    console.log(isLoggedIn + " is val of context on successful login");
     history.push('/update');
   };
 
@@ -28,6 +31,7 @@ function Login() {
       `Failed to login. 😢`
     );
     setIsLoggedIn(false);
+    console.log(isLoggedIn + " is val of context on failed login");
   };
 
   return (
