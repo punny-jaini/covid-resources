@@ -127,7 +127,7 @@ const Home = () => {
             </p>
             <div style={styles.hero}>
                 <h1 style={styles.heroHeading}>Purpose</h1>
-                <p style={styles.heroCopy}>Covid cases are increasing every day, shortage of oxygen, medicines, beds, etc., are commonplace and increasing.  People in need are having difficulties procuring them because of the lack of contacts.</p>
+                <p style={styles.heroCopy}>Covid cases are increasing every day, shortage of oxygen, medicines, beds, etc. are commonplace and increasing.  People in need are having difficulties procuring them because of the lack of contacts.</p>
                 <p style={styles.heroCopy}>This website is your single source of all of the contacts, so you can get to the right person in time with a high confidence that the source has been "crowd-source" verified!! Every life saved is worth it.</p>
                 <p style={styles.heroCopy}>Do you have any leads on any of the resources?  Click on the ‘I can help’ button above, the bigger we can make our information base, the more people will be helped.</p>
             </div>

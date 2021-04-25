@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import { Form, AutoComplete, Select, Button, Row, Col, Card, Alert, List, Modal, Input } from 'antd';
-import { ArrowLeftOutlined, SecurityScanFilled, PhoneFilled, LikeFilled, DislikeFilled } from '@ant-design/icons';
+import { Form, AutoComplete, Select, Button, Row, Col, Card, Alert, List, Modal } from 'antd';
+import { ArrowLeftOutlined, SecurityScanFilled, PhoneFilled, LikeFilled } from '@ant-design/icons';
 import { states } from './states';
 import { Link } from 'react-router-dom';
 import verified from './assets/verified.png';
-import { markVerified, exhausted } from './actions';
+import { markVerified, exhausted, logChange } from './actions';
 import Login from './components/Login';
 
 const { Option } = Select;
@@ -89,7 +89,7 @@ const Update = ({queries, unchecked, functions}) => {
     const [result, setResult] = useState({});
     const [details, setDetails] = useState(null);
     const [vst, setVst] = useState(false);
-    const [pass, setPass] = useState(false);
+    // const [pass, setPass] = useState(false);
 
     const ModalHeader = ({d}) => {
         return (

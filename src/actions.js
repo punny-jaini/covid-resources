@@ -43,6 +43,18 @@ export const addData = (arr) => {
     database.ref(`data/`).update(result).then(()=>console.log(result)).catch(e=>console.log(e));
 }
 
+export const logChange = (item, change) => {
+    const email = localStorage.getItem('email');
+    const key = database.ref(`logs/`).push();
+    database.ref(`logs/${key}`).update({
+        state: item[2],
+        category: item[3],
+        phone: item[0],
+        user: email,
+        change: change
+    })
+}
+
 export const markVerified = (item, toggle, refresh) => {
     database.ref(`help/${item[2]}/${item[3]}/${item[0]}`)
     .update({...item[1], verified: Date.now()}).then(()=>{
