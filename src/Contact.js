@@ -10,9 +10,9 @@ const Seeker = () => {
                 We are a group of students, influencers and simply others who are doing whatever they can to help fight this
                 pandemic together. This is a database of resources collected through various modes including manual contacts,
                 whatsapp, instagram and twitter. <br /><b>Please note: </b> 
-                Everyone is running out of stock, capacity and resources so if you find numbers that are switched off/busy/ or not picking up, move on to the next one.
+                Everyone is running out of stock, capacity and resources so if you find numbers that are switched off/busy or not picking up, move on to the next one.
             </Card>
-            <Card title="Partners">
+            <Card title="Our Team">
                 <Row gutter={[{ sm: 14, md: 20, lg: 24 }, 16]}>
                     <Col sm={7} md={10} lg={12}>
                     A huge shoutout to <a href="https://www.instagram.com/covidaidresources/" target="blank">Covid Aid Resources</a> for working day and night to provide help to those who need it in these times of crisis.
@@ -29,7 +29,7 @@ const Seeker = () => {
                     <Col sm={7} md={10} lg={12}>
                     We are doing our best to continuously keep this updated, any help is much appreciated, please send us as many verified links as you can and share actively!
                     <br />
-                    <a href='https://chat.whatsapp.com/GASCk9eHoJ0EI5n7pOrenT'>Join this group for volunteering!</a><br />
+                    <a href='https://forms.gle/GznUPJ7s5ZwZSsreA'>Reach out and join us!</a><br />
                     Contact: <a href={`tel:+916397973267`}>6397973267</a>{' | '}
                     <a href={`tel:+917354302000`}>7354302000</a>
                     </Col>

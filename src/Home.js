@@ -121,6 +121,10 @@ const Home = () => {
                     </Card>
                 </Col>
             </Row>
+            <p style={{marginBottom: '10px', background: '#fff3cd', padding: '10px', outline: '1px solid #ffcc00'}}>
+            <b>Note: </b>Please ensure you are in compliance with Government of India, state governments in India and local law enforcement authority rules and regulations when using Leads/Suppliers from this site; or providing a Lead/Suppy on this site.
+            This is <b>Crowdsourced data</b> to fight COVID across India. The data is made available to public as is, and is being verified by our volunteers in realtime.
+            </p>
             <div style={styles.hero}>
                 <h1 style={styles.heroHeading}>Purpose</h1>
                 <p style={styles.heroCopy}>Covid cases are increasing every day, shortage of oxygen, medicines, beds, etc., are commonplace and increasing.  People in need are having difficulties procuring them because of the lack of contacts.</p>

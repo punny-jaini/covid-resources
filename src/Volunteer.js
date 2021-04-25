@@ -76,6 +76,9 @@ const Volunteer = () => {
         <Button type="primary" style={styles.backbtn} icon={<ArrowLeftOutlined />}>Back</Button>
         </Link>
         <div style={styles.wrapper}>
+        <p style={{marginBottom: '10px'}}>
+        Please ensure you are in compliance with Government of India, state governments in India and local law enforcement authority rules and regulations when using Leads/Suppliers from this site; or providing a Lead/Suppy on this site.
+            </p>
             <Card title="If you are a provider, please fill this form">
                 {error!=="" && 
                     <Alert 

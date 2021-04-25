@@ -51,12 +51,42 @@ const makedate = (m) => {
     } else return '-'
 }
 
+const filterVerified = (data, update) => {
+    const result = {};
+    let stop = true;
+    Object.entries(data).forEach(state => {
+        Object.entries(state[1]).forEach(categ => {
+            Object.entries(categ[1]).forEach(lead => {
+                if(stop) stop = false;
+                const t = lead[1].verified;
+                if(t) {
+                    const d1 = new Date(t);
+                    let d2 = new Date();
+                    d2 -= 86400000;
+                    if(d1.valueOf()<d2)
+                    {
+                        const s = state[0];
+                        const c = categ[0];
+                        const m = lead[0];
+                        if (!result[s]) result[s]={};
+                        if (!result[s][c]) result[s][c]={};
+                        if (!result[s][c][m]) result[s][c][m]=lead[1];
+                    }
+                }
+            })
+        })
+    })
+    if(!stop) update(result);
+    else update(undefined);
+    console.log(result)
+}
+
 const Update = ({queries, unchecked, functions}) => {
     const [state, setState] = useState(undefined);
     const [categ, setCateg] = useState(undefined);
     const [result, setResult] = useState({});
     const [details, setDetails] = useState(null);
-    const [vst, setVst] = useState(true);
+    const [vst, setVst] = useState(false);
     const [pass, setPass] = useState(false);
 
     const ModalHeader = ({d}) => {
@@ -77,14 +107,15 @@ const Update = ({queries, unchecked, functions}) => {
                 if (queries[state] && queries[state][categ]) {
                     temp[state] = {};
                     temp[state][categ] = queries[state][categ];
-                } else temp=undefined;
-                setResult(temp);
+                    filterVerified(temp, setResult);
+                } else setResult(undefined);
             }
             else if (state) {
                 let temp = {};
-                if (queries[state]) temp[state] = queries[state];
-                else temp = undefined;
-                setResult(temp);
+                if (queries[state]) {
+                    temp[state] = queries[state];
+                    filterVerified(temp, setResult);
+                } else setResult(undefined);
             }
             else if (categ) {
                 let stop=true, temp = {};
@@ -95,10 +126,10 @@ const Update = ({queries, unchecked, functions}) => {
                         temp[kvp[0]][categ] = kvp[1][categ];
                     }
                 });
-                if (stop) temp = undefined;
-                setResult(temp);
+                if (stop) setResult(undefined);
+                else filterVerified(temp, setResult);
             }
-            else setResult(queries);
+            else filterVerified(queries, setResult);
         } else {
             if (state && categ) {
                 let temp = {};
@@ -183,10 +214,10 @@ const Update = ({queries, unchecked, functions}) => {
                 >
                     <Select
                         onChange={c => setCateg(c)}
-                        defaultValue={true}
+                        defaultValue={false}
                         onChange={e=>setVst(e)}
                     >
-                    <Option value={true}>VERIFIED</Option>
+                    <Option value={true}>VERIFIED more than 24 hrs ago</Option>
                     <Option value={false}>UNVERIFIED</Option>
                     </Select>
                 </Form.Item>
@@ -257,14 +288,14 @@ const Update = ({queries, unchecked, functions}) => {
                         )}
                     </div>
                         // {/* </Card> */}
-                    )}</div>) : <Alert style={{marginTop: '10px'}} type="warning" message="No record Found" showIcon/>}
+                    )}</div>) : <Alert style={{marginTop: '10px'}} type="warning" message="We are working on finding new leads every second, please hold on tight!" showIcon/>}
             </div>
         </div>
         ) : (
             <div style={{margin: '10%'}}>
-                <p style={{}}>
-                Use this page to help us <b>check and verify our leads</b>! Please enter your password or 
-                <a target="blank" href="https://forms.gle/GznUPJ7s5ZwZSsreA"> contact us </a> if you would like to offer help!
+                <p style={{margin: '5px', textAlign: 'center'}}>
+                Enter the password below if you are a registered verifier.<br />
+                Click <a target="blank" href="https://forms.gle/GznUPJ7s5ZwZSsreA">here</a> if you would like to register and generate a password.<br />
                 </p>
                 <Form>
                     <Form.Item

@@ -125,6 +125,9 @@ const Seeker = ({queries}) => {
         <Button type="primary" style={styles.backbtn} icon={<ArrowLeftOutlined />}>Back</Button>
         </Link>
         <div style={styles.wrapper}>
+            <p style={{marginBottom: '10px'}}>
+            <b>Please Note: </b>This is <b>Crowdsourced data</b> to fight COVID across India. The data is made available to public as is, and is being verified by our volunteers in realtime.<br />
+            </p>
             <Form layout="inline">
                 {/* <Form.Item>
                     <Button type="primary" style={styles.new} disabled>Add New Request</Button>

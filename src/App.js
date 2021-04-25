@@ -75,7 +75,7 @@ const App = () => {
         </Switch>
       </Content>
       <Footer style={{ textAlign: 'center', backgroundColor: 'white', marginTop: '10px', color: '#646464'}}>
-        Covid Toolkit ©2021 Created by Lakshay Agrawal
+        Covid Khoj ©2021 Created by Lakshay Agrawal
       </Footer>
     </Layout>
   </BrowserRouter>
