@@ -144,7 +144,7 @@ const Volunteer = () => {
             <Card title="How else can I help?">
                 <Card type="inner">
                     Glad you asked! We keep this resource freely available to all, it will be a huge help if you could verify the entries we have received.
-                    <br /><center><a href='https://chat.whatsapp.com/GASCk9eHoJ0EI5n7pOrenT' target="blank">
+                    <br /><center><a href='https://forms.gle/GznUPJ7s5ZwZSsreA' target="blank">
                         <Button type="primary">Help Now</Button>
                     </a></center><br />
                     Please reach out to us on instagram, whatsapp or linkedin through the About section for any queries. 

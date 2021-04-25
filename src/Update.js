@@ -259,7 +259,13 @@ const Update = ({queries, unchecked, functions}) => {
             </div>
         </div>
         ) : (
-            <Login />
+            <div style={{margin: '10%'}}>
+                <p style={{}}>
+                Use this page to help us <b>check and verify our leads</b>! Please login with Google or 
+                <a target="blank" href="https://forms.gle/GznUPJ7s5ZwZSsreA"> contact us </a> if you would like to offer help!
+                </p>
+                <Login />
+            </div>
         )}
         </>
     )

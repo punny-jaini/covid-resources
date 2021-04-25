@@ -18,6 +18,31 @@ export const getUnverified = (update) => {
     })
 }
 
+export const addData = (arr) => {
+    let result = {};
+    arr.forEach(lead => {
+        if(lead['Status']&&lead['STATE']&&lead['Type of Help']&&lead.Phone){
+        const s = lead['Status'].toLowerCase();
+        const st = lead['STATE'].toLowerCase().replace(/\/|\./g, "_");
+        const cat = lead['Type of Help'].toLowerCase().replace(" ", "_");
+        if (!result[s]) result[s]={};
+        if (!result[s][st]) result[s][st]={};
+        if (!result[s][st][cat]) result[s][st][cat]={};
+        result[s][st][cat][lead.Phone.replace(/\/|\./g, "_")] = {
+            link: lead['Address/Link'],
+            area: lead['Area'],
+            city: lead['City'],
+            desc: lead['Comments'],
+            date: lead['Last Verified at Date'],
+            time: lead['Last Verified at Time'],
+            name: lead['Point of Contact'],
+            pincode: lead['Zip Code']
+        }
+    }
+    })
+    database.ref(`data/`).update(result).then(()=>console.log(result)).catch(e=>console.log(e));
+}
+
 export const markVerified = (item, toggle, refresh) => {
     database.ref(`help/${item[2]}/${item[3]}/${item[0]}`)
     .update({...item[1], verified: Date.now()}).then(()=>{

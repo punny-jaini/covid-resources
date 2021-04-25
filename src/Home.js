@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const styles = {
     wrapper: {
         margin: 'auto',
-        marginTop: '50px'
+        marginTop: '30px'
     },
     container: {
 
@@ -47,6 +47,16 @@ const styles = {
         height: '60px',
         borderRadius: '10px',
         fontSize: '18px'
+    },
+    cta : {
+        width: '90%',
+        maxWidth: '600px',
+        marginBottom: '40px'
+    },
+    ctabtn : {
+        width: '100%', 
+        height: '80px', 
+        fontSize: '1.7em'
     }
 }
 
@@ -61,6 +71,15 @@ const props = {
 const Home = () => {
     return (
         <div style={styles.wrapper}>
+            <center>
+            <div style={styles.cta}>
+                <a target="blank" href="https://forms.gle/GznUPJ7s5ZwZSsreA">
+                <Button type="primary" shape="round" style={styles.ctabtn}>
+                    I can help !
+                </Button>
+                </a>
+            </div>
+            </center>
             <Row gutter={[{ sm: 16, md: 20, lg: 24 }, 16]}>
                 <Col sm={8} md={10} lg={12} style={styles.container}>
                     <Card style={styles.helpCard}>
@@ -104,9 +123,9 @@ const Home = () => {
             </Row>
             <div style={styles.hero}>
                 <h1 style={styles.heroHeading}>Purpose</h1>
-                <p style={styles.heroCopy}>In these difficult times where covid cases are increasing with each passing day, shortage of resources like oxygen, medicines, beds, etc., are on the rise. Even if these are available, people are having difficulties procuring them because of the lack of contacts.</p>
-                <p style={styles.heroCopy}>We decided to make a single source of all of the contacts, so people in need can get to the right person in time, by crowd-sourcing useful contacts. Even if we can save one life, it will be worth it.</p>
-                <p style={styles.heroCopy}>If you have any leads on any of the resources you can help others by clicking the ‘I can help’ button above, the bigger we can make our database, the more people we can help.</p>
+                <p style={styles.heroCopy}>Covid cases are increasing every day, shortage of oxygen, medicines, beds, etc., are commonplace and increasing.  People in need are having difficulties procuring them because of the lack of contacts.</p>
+                <p style={styles.heroCopy}>This website is your single source of all of the contacts, so you can get to the right person in time with a high confidence that the source has been "crowd-source" verified!! Every life saved is worth it.</p>
+                <p style={styles.heroCopy}>Do you have any leads on any of the resources?  Click on the ‘I can help’ button above, the bigger we can make our information base, the more people will be helped.</p>
             </div>
         </div>
     )
