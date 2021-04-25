@@ -4,8 +4,7 @@ import { GoogleLogin } from 'react-google-login';
 // refresh token
 import { refreshTokenSetup } from '../utils/refreshToken';
 
-const clientId =
-  '483933534809-u26duelm7pqej6en9cru19cjqkp3a0uj.apps.googleusercontent.com';
+const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
 
 function Login() {
 
