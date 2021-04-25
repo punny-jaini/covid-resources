@@ -5,6 +5,8 @@ import { states } from './states';
 import { Link } from 'react-router-dom';
 import verified from './assets/verified.png';
 import { markVerified, exhausted } from './actions';
+import Login from './components/Login';
+
 const { Option } = Select;
 
 const styles= {
@@ -131,7 +133,8 @@ const Update = ({queries, unchecked, functions}) => {
     }
 
     const checkPasscode = p => {
-        if(p.target.value===process.env.REACT_APP_VERIFY_PASSWORD) setPass(true);
+        const isLoggedIn = localStorage.getItem('isLoggedIn') == 'true';
+        if(isLoggedIn) setPass(true);
     }
 
     useEffect(()=>sortResult(), [queries, unchecked, state, categ, vst]);
@@ -261,16 +264,7 @@ const Update = ({queries, unchecked, functions}) => {
             </div>
         </div>
         ) : (
-            <div style={{margin: '10%'}}>
-                <Form>
-                    <Form.Item
-                        name="password"
-                        label="Password: "
-                    >
-                        <Input placeholder="Enter Passcode" onChange={checkPasscode} />
-                    </Form.Item>
-                </Form>
-            </div>
+            <Login />
         )}
         </>
     )

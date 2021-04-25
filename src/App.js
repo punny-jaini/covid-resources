@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
-import { Layout, Menu} from 'antd';
-import { Route, Switch, BrowserRouter, Link } from 'react-router-dom';
+import { Layout } from 'antd';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
 // import './App.css';
 import 'antd/dist/antd.css';
 import Home from './Home';
@@ -12,6 +12,7 @@ import Update from './Update';
 import Dashboard from './Dashboard'
 import { getHelpers, getUnverified, getLinks } from './actions';
 import Resources from './resources';
+import Navbar from './components/Navbar';
 
 const { Content, Footer } = Layout;
 
@@ -27,25 +28,7 @@ const App = () => {
   return (
   <BrowserRouter>
     <Layout className="layout" style={{minHeight: '100vh'}}>
-      {/* <div style={{padding: "1%"}}> */}
-        <Menu theme="dark" mode="horizontal" style={{ fontSize: '22px', padding: "1%", display: 'flex', justifyContent:'flex-end' }} defaultSelectedKeys={[window.location.pathname]}>
-          {/* <Menu.Item>
-            <Link to="/" style={{ fontWeight: '600', color: 'white' }}>Resources</Link>
-          </Menu.Item> */}
-          <Menu.Item key="/" style={{fontSize: '16px'}}>
-            <Link to="/">Home</Link>
-          </Menu.Item>
-          <Menu.Item key="/dashboard" style={{fontSize: '16px'}}>
-            <Link to="/dashboard">Live</Link>
-          </Menu.Item>
-          <Menu.Item key="/resources" style={{fontSize: '16px'}}>
-            <Link to="/resources">Links</Link>
-          </Menu.Item>
-          <Menu.Item key="/about" style={{fontSize: '16px'}}>
-            <Link to="/about">About</Link>
-          </Menu.Item>
-        </Menu>
-      {/* </div> */}
+      <Navbar />
       <Content style={{ padding: '0 2%'}}>
         <Switch>
           <Route path="/resources">
