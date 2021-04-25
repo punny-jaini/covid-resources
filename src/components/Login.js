@@ -8,11 +8,9 @@ const clientId =
   '483933534809-u26duelm7pqej6en9cru19cjqkp3a0uj.apps.googleusercontent.com';
 
 function Login() {
+
   const onSuccess = (res) => {
     console.log('Login Success: currentUser:', res.profileObj);
-    alert(
-      `Logged in successfully welcome ${res.profileObj.name} 😍. \n See console for full profile object.`
-    );
     localStorage.setItem('name', res.profileObj.name);
     localStorage.setItem('email', res.profileObj.email);
     localStorage.setItem('isLoggedIn', true);
@@ -22,9 +20,6 @@ function Login() {
 
   const onFailure = (res) => {
     console.log('Login failed: res:', res);
-    alert(
-      `Failed to login. 😢 Please ping this to repo owner twitter.com/sivanesh_fiz`
-    );
     localStorage.setItem('isLoggedIn', false);
     localStorage.removeItem('name');
     localStorage.removeItem('email');

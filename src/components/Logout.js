@@ -7,13 +7,9 @@ const clientId =
 function Logout() {
   const onSuccess = () => {
     console.log('Logout made successfully');
-    alert('Logout made successfully ✌');
     localStorage.removeItem('name');
     localStorage.removeItem('email');
     localStorage.setItem('isLoggedIn', false);
-    // if(localStorage.getItem('isLoggedIn') == 'false') {
-    //     window.location.reload(false);
-    // }
     window.location.reload(false);
   };
 

@@ -132,16 +132,11 @@ const Update = ({queries, unchecked, functions}) => {
         }
     }
 
-    const checkPasscode = p => {
-        const isLoggedIn = localStorage.getItem('isLoggedIn') == 'true';
-        if(isLoggedIn) setPass(true);
-    }
-
     useEffect(()=>sortResult(), [queries, unchecked, state, categ, vst]);
 
     return (
         <>
-        {pass? (
+        {localStorage.getItem('isLoggedIn') == 'true' ? (
         <div>
         <Link to="/">
         <Button type="primary" style={styles.backbtn} icon={<ArrowLeftOutlined />}>Back</Button>
