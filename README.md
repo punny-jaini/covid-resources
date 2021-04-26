@@ -1,5 +1,5 @@
 ## Prerequisite: Node.js
-https://nodejs.org/en/download/
+https://nodejs.org/en/download/ (or if you are using [WSL](https://docs.microsoft.com/en-us/windows/wsl/about), use the installation instructions [here](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl))
 
 ## Commands to run after you clone the repo into your system:
 
@@ -12,7 +12,7 @@ https://nodejs.org/en/download/
 
 ## License
 ```
-    Copyright (C) 2021 COVID Resources Team
+    Copyright (C) 2021 COVID Khoj Team
 
     This program is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as published
